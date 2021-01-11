@@ -1,4 +1,4 @@
-package top
+package leetcode
 
 // ListNode 链表节点
 type ListNode struct {
