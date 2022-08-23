@@ -3,7 +3,7 @@ package leetcode
 // TwoSum 两数之和
 func TwoSum(nums []int, target int) []int {
 	// 可以通过遍历，时间复杂度是O(n²)，但不是最佳的解法
-	//for i := 0; i < len(nums); i++ {
+	//for i := 0; i < len(nums)-1; i++ {
 	//	for j := i + 1; j < len(nums); j++ {
 	//		if nums[i]+nums[j] == target {
 	//			pos[0], pos[1] = i, j
