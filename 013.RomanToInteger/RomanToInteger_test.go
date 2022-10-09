@@ -4,14 +4,16 @@ import "testing"
 
 func TestRomanToInteger(t *testing.T) {
 	s := "IX"
+	expected := 9
 	sum := RomanToInteger(s)
-	if sum != 9 {
-		t.Fatalf("%s should be 9", s)
+	if sum != expected {
+		t.Fatalf("should be %d,but is %d", expected, sum)
 	}
 
 	s = "MCMXCIV"
+	expected = 1994
 	sum = RomanToInteger(s)
-	if sum != 1994 {
-		t.Fatalf("%s should be 1994", s)
+	if sum != expected {
+		t.Fatalf("should be %d,but is %d", expected, sum)
 	}
 }

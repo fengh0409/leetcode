@@ -3,17 +3,17 @@ package leetcode
 import "testing"
 
 func TestLengthOfLongestSubstring(t *testing.T) {
-	var s = "pwwkew"
-
+	s := "pwwkew"
+	expected := 3
 	max := LengthOfLongestSubstring(s)
-	if max != 3 {
-		t.Fatalf("should be 3, but is %d", max)
+	if max != expected {
+		t.Fatalf("should be %d, but is %d", expected, max)
 	}
 
 	s = "pw wkew"
-
+	expected = 4
 	max = LengthOfLongestSubstring(s)
-	if max != 4 {
-		t.Fatalf("should be 4, but is %d", max)
+	if max != expected {
+		t.Fatalf("should be %d, but is %d", expected, max)
 	}
 }

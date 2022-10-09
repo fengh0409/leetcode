@@ -7,7 +7,7 @@ func TestReverseInteger(t *testing.T) {
 	expected := 32532432
 	rev := ReverseInteger(x)
 	if rev != expected {
-		t.Fatalf("%d should be %d, but is", expected, rev)
+		t.Fatalf("should be %d, but is %d", expected, rev)
 	}
 
 	// 测试溢出
@@ -15,7 +15,7 @@ func TestReverseInteger(t *testing.T) {
 	expected = 0
 	rev = ReverseInteger(x)
 	if rev != expected {
-		t.Fatalf("%d should be %d, but is", expected, rev)
+		t.Fatalf("should be %d, but is %d", expected, rev)
 	}
 
 	// 测试溢出
@@ -23,6 +23,6 @@ func TestReverseInteger(t *testing.T) {
 	expected = 0
 	rev = ReverseInteger(x)
 	if rev != expected {
-		t.Fatalf("%d should be %d, but is", expected, rev)
+		t.Fatalf("should be %d, but is %d", expected, rev)
 	}
 }

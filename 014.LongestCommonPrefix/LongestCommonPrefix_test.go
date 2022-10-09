@@ -7,13 +7,13 @@ func TestLongestCommonPrefix(t *testing.T) {
 	expected := "fl"
 	prefix := LongestCommonPrefix(strs)
 	if prefix != expected {
-		t.Fatalf("the longest common prefix should be %s", expected)
+		t.Fatalf("the longest common prefix should be %s, but is %s", expected, prefix)
 	}
 
 	strs = []string{"cir", "car"}
 	expected = "c"
 	prefix = LongestCommonPrefix(strs)
 	if prefix != expected {
-		t.Fatalf("the longest common prefix should be %s", expected)
+		t.Fatalf("the longest common prefix should be %s, but is %s", expected, prefix)
 	}
 }
