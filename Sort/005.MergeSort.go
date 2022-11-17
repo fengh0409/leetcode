@@ -1,7 +1,10 @@
 package leetcode
 
+import "fmt"
+
 // MergeSort 归并排序，时间复杂度O(nlogn)，稳定
 func MergeSort(nums []int) []int {
+	fmt.Println(nums)
 	if len(nums) <= 1 {
 		return nums
 	}
@@ -15,8 +18,10 @@ func MergeSort(nums []int) []int {
 }
 
 func merge(left, right []int) []int {
+	fmt.Println("merge before===>", left, right)
 	l, r := 0, 0
 	result := make([]int, 0, l+r)
+	// 最后一次归并变成合并两个有序数组
 	for l < len(left) && r < len(right) {
 		if left[l] < right[r] {
 			result = append(result, left[l])
@@ -34,5 +39,6 @@ func merge(left, right []int) []int {
 		result = append(result, right[r:]...)
 	}
 
+	fmt.Println("merge after===>", result)
 	return result
 }
