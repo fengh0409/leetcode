@@ -1,12 +1,11 @@
 package leetcode
 
-type ListNode struct {
-	Val  int
-	Next *ListNode
-}
+import "github.com/halfrost/LeetCode-Go/structures"
 
-// MergeTwoLists 合并两个有序链表
-func MergeTwoLists(list1 *ListNode, list2 *ListNode) *ListNode {
+type ListNode = structures.ListNode
+
+// MergeTwoSortedLists 合并两个有序链表
+func MergeTwoSortedLists(list1 *ListNode, list2 *ListNode) *ListNode {
 	// 解法一：
 	// 类似合并两个有序数组，同时遍历两条链表，比较数值大小
 	var list3 = &ListNode{}
@@ -44,9 +43,9 @@ func MergeTwoLists(list1 *ListNode, list2 *ListNode) *ListNode {
 	//	return list1
 	//}
 	//if list1.Val < list2.Val {
-	//	list1.Next = MergeTwoLists(list1.Next, list2)
+	//	list1.Next = MergeTwoSortedLists(list1.Next, list2)
 	//	return list1
 	//}
-	//list2.Next = MergeTwoLists(list1, list2.Next)
+	//list2.Next = MergeTwoSortedLists(list1, list2.Next)
 	//return list2
 }

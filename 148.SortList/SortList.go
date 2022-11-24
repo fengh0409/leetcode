@@ -1,9 +1,8 @@
 package leetcode
 
-type ListNode struct {
-	Val  int
-	Next *ListNode
-}
+import "github.com/halfrost/LeetCode-Go/structures"
+
+type ListNode = structures.ListNode
 
 // SortList 排序链表
 func SortList(head *ListNode) *ListNode {
@@ -30,24 +29,25 @@ func SortList(head *ListNode) *ListNode {
 	return merge(left, right)
 }
 
+// 合并两个有序链表
 func merge(list1, list2 *ListNode) *ListNode {
-	dummy := &ListNode{}
-	list := dummy
+	list3 := &ListNode{}
+	dummy := list3
 	for list1 != nil && list2 != nil {
 		if list1.Val <= list2.Val {
-			list.Next = list1
+			list3.Next = list1
 			list1 = list1.Next
 		} else {
-			list.Next = list2
+			list3.Next = list2
 			list2 = list2.Next
 		}
-		list = list.Next
+		list3 = list3.Next
 	}
 
 	if list1 != nil {
-		list.Next = list1
+		list3.Next = list1
 	} else if list2 != nil {
-		list.Next = list2
+		list3.Next = list2
 	}
 
 	return dummy.Next
