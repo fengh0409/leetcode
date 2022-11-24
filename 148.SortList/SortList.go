@@ -7,54 +7,47 @@ type ListNode struct {
 
 // SortList 排序链表
 func SortList(head *ListNode) *ListNode {
-	return sort(head, nil)
-}
-
-func sort(head, tail *ListNode) *ListNode {
-	if head == nil {
+	if head == nil || head.Next == nil {
 		return head
 	}
 
-	// ??
-	if head.Next == tail {
-		head.Next = nil
-		return head
-	}
-
+	// 寻找中间节点
 	// 快慢指针，快指针每次移动2步，慢指针每次移动1步，
 	// 当快指针到达链表末尾时，慢指针指向的链表节点即为链表的中点。
-	slow, fast := head, head
-	for fast != tail {
+	slow, fast := head, head.Next.Next
+	for fast != nil && fast.Next != nil {
 		slow = slow.Next
-		// 快指针每次移动2步
-		fast = fast.Next
-		if fast != tail {
-			fast = fast.Next
-		}
+		fast = fast.Next.Next
 	}
-
 	mid := slow
-	return merge(sort(head, mid), sort(mid, tail))
+	// 找到中间节点后，断开链表
+	rightHead := mid.Next
+	mid.Next = nil
+
+	left := SortList(head)
+	right := SortList(rightHead)
+
+	return merge(left, right)
 }
 
-func merge(head1, head2 *ListNode) *ListNode {
+func merge(list1, list2 *ListNode) *ListNode {
 	dummy := &ListNode{}
-	temp, temp1, temp2 := dummy, head1, head2
-	for temp1 != nil && temp2 != nil {
-		if temp1.Val <= temp2.Val {
-			temp.Next = temp1
-			temp1 = temp1.Next
+	list := dummy
+	for list1 != nil && list2 != nil {
+		if list1.Val <= list2.Val {
+			list.Next = list1
+			list1 = list1.Next
 		} else {
-			temp.Next = temp2
-			temp2 = temp2.Next
+			list.Next = list2
+			list2 = list2.Next
 		}
-		temp = temp.Next
+		list = list.Next
 	}
 
-	if temp1 != nil {
-		temp.Next = temp1
-	} else if temp2 != nil {
-		temp.Next = temp2
+	if list1 != nil {
+		list.Next = list1
+	} else if list2 != nil {
+		list.Next = list2
 	}
 
 	return dummy.Next
