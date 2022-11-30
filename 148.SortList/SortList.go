@@ -13,8 +13,8 @@ func SortList(head *ListNode) *ListNode {
 	// 寻找中间节点
 	// 快慢指针，快指针每次移动2步，慢指针每次移动1步，
 	// 当快指针到达链表末尾时，慢指针指向的链表节点即为链表的中点。
-	slow, fast := head, head.Next.Next
-	for fast != nil && fast.Next != nil {
+	slow, fast := head, head
+	for fast.Next != nil && fast.Next.Next != nil {
 		slow = slow.Next
 		fast = fast.Next.Next
 	}
