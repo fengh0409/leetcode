@@ -37,6 +37,7 @@ func (this *LRUCache) Get(key int) int {
 	if !ok {
 		return -1
 	}
+	// 把这个节点移到最前面
 	this.moveToHead(node)
 	return node.value
 }
@@ -48,6 +49,7 @@ func (this *LRUCache) Put(key int, value int) {
 		this.moveToHead(node)
 		return
 	}
+
 	node = initNode(key, value)
 	this.data[key] = node
 	this.addToHead(node)
@@ -67,6 +69,7 @@ func (this *LRUCache) addToHead(node *Node) {
 }
 
 func (this *LRUCache) moveToHead(node *Node) {
+	// 把节点移到最前面需要先把该节点从原始位置删除，再移动到最前
 	this.removeNode(node)
 	this.addToHead(node)
 }
@@ -77,6 +80,7 @@ func (this *LRUCache) removeNode(node *Node) {
 }
 
 func (this *LRUCache) removeTail() *Node {
+	// 移除末尾到节点，也就是tail的前一个节点
 	node := this.tail.prev
 	this.removeNode(node)
 	return node
