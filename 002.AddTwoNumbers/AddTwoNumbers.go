@@ -7,7 +7,8 @@ type ListNode struct {
 
 // AddTwoNumbers 两数相加，两个链表相加
 func AddTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
-	var l3, current *ListNode
+	var dummy = &ListNode{}
+	var l3 = dummy
 	var carry int
 
 	// 时间复杂度 O(max(m,n))，max(m,n)为两个链表最长的值
@@ -30,24 +31,19 @@ func AddTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
 		// 三数相加取整，即为进位，进位存起来，下一次遍历会用到
 		carry = sum / 10
 
-		// 第一次遍历
-		if l3 == nil {
-			l3 = &ListNode{Val: val}
-			// 用l3给current赋值，通过current改变l3的值
-			current = l3
-		} else {
-			current.Next = &ListNode{Val: val}
-			// 最后节点向后移位
-			current = current.Next
-		}
+		l := &ListNode{Val: val}
+		l3.Next = l
+		l3 = l3.Next
 	}
 
 	// 若遍历结束后还剩一个进位，则最后再加一个节点
 	if carry > 0 {
-		current.Next = &ListNode{Val: carry}
+		l := &ListNode{Val: carry}
+		l3.Next = l
+		l3 = l3.Next
 	}
 
-	return l3
+	return dummy.Next
 }
 
 // 以下为错误解法，这种方式会发生求和溢出的情况
