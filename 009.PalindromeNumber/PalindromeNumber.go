@@ -1,5 +1,6 @@
 package leetcode
 
+// IsPalindrome 判断一个整数是否是回文数
 func IsPalindrome(x int) bool {
 	if x < 0 {
 		return false
