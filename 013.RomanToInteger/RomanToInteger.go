@@ -2,10 +2,7 @@ package leetcode
 
 // RomanToInteger 罗马数字转整数
 func RomanToInteger(s string) int {
-	// 注意总结规律
-	if len(s) == 0 {
-		return 0
-	}
+	var sum int
 	var m = map[byte]int{
 		'I': 1,
 		'V': 5,
@@ -15,18 +12,17 @@ func RomanToInteger(s string) int {
 		'D': 500,
 		'M': 1000,
 	}
-	var sum int
-	var pre = m[s[0]]
-	for i := 1; i < len(s); i++ {
-		if pre < m[s[i]] {
-			sum -= pre
+	// 把一个小值放在大值的左边，就是做减法，否则为加法。
+	// 比较当前值与后一位的值，当前值比后一位小小于则做减法，大于则做加法
+	for i := 0; i < len(s)-1; i++ {
+		if m[s[i]] < m[s[i+1]] {
+			sum -= m[s[i]]
 		} else {
-			sum += pre
+			sum += m[s[i]]
 		}
-		pre = m[s[i]]
 	}
-	// 加最后一个元素
-	sum += pre
+	// 最后一个元素做加法
+	sum += m[s[len(s)-1]]
 
 	return sum
 
