@@ -34,7 +34,7 @@ func RemoveNthFromEnd(head *ListNode, n int) *ListNode {
 	//}
 
 	//dummy := &ListNode{0, head}
-	//current = head
+	//current = dummy
 	//for i := 0; i < length-n; i++ {
 	//	current = current.Next
 	//}
