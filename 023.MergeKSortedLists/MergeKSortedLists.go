@@ -8,7 +8,7 @@ type ListNode = structures.ListNode
 func MergeKLists(lists []*ListNode) *ListNode {
 	// 归并排序，分治法
 	length := len(lists)
-	if length < 1 {
+	if length == 0 {
 		return nil
 	}
 	if length == 1 {
