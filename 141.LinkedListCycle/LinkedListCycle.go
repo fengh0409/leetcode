@@ -18,4 +18,15 @@ func HasCycle(head *ListNode) bool {
 		}
 	}
 	return false
+
+	// 解法二：哈希表，使用了O(n)的存储空间
+	//var m = map[*ListNode]struct{}{}
+	//for head != nil {
+	//	if _, ok := m[head]; ok {
+	//		return true
+	//	}
+	//	m[head] = struct{}{}
+	//	head = head.Next
+	//}
+	//return false
 }

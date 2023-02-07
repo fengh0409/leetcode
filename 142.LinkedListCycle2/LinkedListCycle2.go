@@ -14,6 +14,7 @@ func DetectCycle(head *ListNode) *ListNode {
 			break
 		}
 	}
+	// 快指针跑到结尾，表示链表无环，结束
 	if fast == nil || fast.Next == nil {
 		return nil
 	}
