@@ -12,7 +12,7 @@ type Node struct {
 	prev, next *Node
 }
 
-func initNode(key, value int) *Node {
+func newNode(key, value int) *Node {
 	return &Node{
 		key:   key,
 		value: value,
@@ -22,8 +22,8 @@ func initNode(key, value int) *Node {
 func Constructor(capacity int) LRUCache {
 	// 构造一个dummy head和dummy tail
 	cache := LRUCache{
-		head:     initNode(0, 0),
-		tail:     initNode(0, 0),
+		head:     newNode(0, 0),
+		tail:     newNode(0, 0),
 		data:     make(map[int]*Node),
 		capacity: capacity,
 	}
@@ -50,7 +50,7 @@ func (this *LRUCache) Put(key int, value int) {
 		return
 	}
 
-	node = initNode(key, value)
+	node = newNode(key, value)
 	this.data[key] = node
 	this.addToHead(node)
 	this.size++

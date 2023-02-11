@@ -23,31 +23,33 @@ func SortList(head *ListNode) *ListNode {
 	rightHead := mid.Next
 	mid.Next = nil
 
-	left := SortList(head)
-	right := SortList(rightHead)
+	list1 := SortList(head)
+	list2 := SortList(rightHead)
 
-	return merge(left, right)
+	return merge(list1, list2)
 }
 
 // 合并两个有序链表
 func merge(list1, list2 *ListNode) *ListNode {
-	list3 := &ListNode{}
-	dummy := list3
-	for list1 != nil && list2 != nil {
-		if list1.Val <= list2.Val {
+	dummy := &ListNode{}
+	list3 := dummy
+	for list1 != nil || list2 != nil {
+		if list1 != nil && list2 != nil {
+			if list1.Val > list2.Val {
+				list3.Next = list2
+				list2 = list2.Next
+			} else {
+				list3.Next = list1
+				list1 = list1.Next
+			}
+		} else if list1 != nil {
 			list3.Next = list1
-			list1 = list1.Next
+			list1 = nil
 		} else {
 			list3.Next = list2
-			list2 = list2.Next
+			list2 = nil
 		}
 		list3 = list3.Next
-	}
-
-	if list1 != nil {
-		list3.Next = list1
-	} else if list2 != nil {
-		list3.Next = list2
 	}
 
 	return dummy.Next
