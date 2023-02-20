@@ -12,6 +12,7 @@ func Search(nums []int, target int) int {
 		if nums[mid] == target {
 			return mid
 		}
+		// 有一半肯定是有序的，如果左边值小于中间值，说明左侧部分是有序的，否则右侧部分是有序的
 		if nums[left] <= nums[mid] {
 			if nums[left] <= target && target < nums[mid] {
 				right = mid - 1
