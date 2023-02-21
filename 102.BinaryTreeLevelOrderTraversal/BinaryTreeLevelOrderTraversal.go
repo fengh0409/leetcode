@@ -24,9 +24,10 @@ func LevelOrder(root *TreeNode) [][]int {
 				queue = append(queue, queue[i].Right)
 			}
 		}
-		// 上面到for循环遍历完后，从queue中移除已经遍历过的元素
-		queue = queue[length:]
 		result = append(result, tmp)
+		// 上面到for循环遍历完后，从queue中移除已经遍历过的元素
+		// 不这么做也可以在外层for循环里的最开头将queue赋值给一个新的变量，然后将queue置为nil
+		queue = queue[length:]
 	}
 	return result
 }
