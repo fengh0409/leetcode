@@ -6,6 +6,7 @@ func IsPalindrome(x int) bool {
 		return false
 	}
 
+	// 先反转整数
 	var rev int
 	var y = x
 	for y != 0 {
@@ -13,6 +14,7 @@ func IsPalindrome(x int) bool {
 		rev = rev*10 + n
 		y = y / 10
 	}
+	// 再比较数据是否相等
 	if rev == x {
 		return true
 	}

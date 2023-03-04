@@ -12,7 +12,14 @@ func IsPalindrome(head *ListNode) bool {
 		return true
 	}
 
-	left := findMiddleNode(head)
+	// 通过快慢指针找到中间节点
+	slow, fast := head, head
+	for fast.Next != nil && fast.Next.Next != nil {
+		slow = slow.Next
+		fast = fast.Next.Next
+	}
+	left := slow
+
 	rightReverseList := reverseLinkedList(left.Next)
 	p1, p2 := head, rightReverseList
 	for p2 != nil {
@@ -23,16 +30,6 @@ func IsPalindrome(head *ListNode) bool {
 		p2 = p2.Next
 	}
 	return true
-}
-
-// 通过快慢指针找到中间节点
-func findMiddleNode(head *ListNode) *ListNode {
-	slow, fast := head, head
-	for fast.Next != nil && fast.Next.Next != nil {
-		slow = slow.Next
-		fast = fast.Next.Next
-	}
-	return slow
 }
 
 // 反转链表
