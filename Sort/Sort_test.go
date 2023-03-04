@@ -77,3 +77,14 @@ func TestMergeSort(t *testing.T) {
 		fmt.Printf("【input】 : %v\n【output】: %v\n\n", input, result)
 	}
 }
+
+func TestQuickSort(t *testing.T) {
+	setup()
+	fmt.Printf("QuickSort unit test:\n")
+	for _, item := range mocks {
+		var input = make([]int, len(item.input))
+		copy(input, item.input)
+		result := QuickSort(item.input)
+		fmt.Printf("【input】 : %v\n【output】: %v\n\n", input, result)
+	}
+}
