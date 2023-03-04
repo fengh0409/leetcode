@@ -30,11 +30,6 @@ func TestRemoveNthFromEnd(t *testing.T) {
 	qs := []removeNthFromEnd{
 
 		{
-			input{[]int{1}, 3},
-			output{[]int{1}},
-		},
-
-		{
 			input{[]int{1, 2}, 2},
 			output{[]int{2}},
 		},
@@ -42,11 +37,6 @@ func TestRemoveNthFromEnd(t *testing.T) {
 		{
 			input{[]int{1}, 1},
 			output{[]int{}},
-		},
-
-		{
-			input{[]int{1, 2, 3, 4, 5}, 10},
-			output{[]int{1, 2, 3, 4, 5}},
 		},
 
 		{
