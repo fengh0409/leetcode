@@ -5,6 +5,7 @@ func MaxProfit(prices []int) int {
 	if len(prices) == 0 {
 		return 0
 	}
+
 	var min = prices[0]
 	var maxProfit int
 	for i := 1; i < len(prices); i++ {
