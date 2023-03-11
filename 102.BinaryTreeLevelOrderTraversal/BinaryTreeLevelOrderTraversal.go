@@ -12,22 +12,22 @@ func LevelOrder(root *TreeNode) [][]int {
 
 	result := [][]int{}
 	queue := []*TreeNode{root}
-	for len(queue) > 0 {
-		length := len(queue)
-		tmp := make([]int, 0, length)
-		for i := 0; i < length; i++ {
-			tmp = append(tmp, queue[i].Val)
-			if queue[i].Left != nil {
-				queue = append(queue, queue[i].Left)
+	for len(queue) != 0 {
+		var tmpVal []int
+		var tmpQueue = queue
+		// 这里需要将queue清空，重新赋值
+		queue = []*TreeNode{}
+		for _, node := range tmpQueue {
+			tmpVal = append(tmpVal, node.Val)
+			if node.Left != nil {
+				queue = append(queue, node.Left)
 			}
-			if queue[i].Right != nil {
-				queue = append(queue, queue[i].Right)
+			if node.Right != nil {
+				queue = append(queue, node.Right)
 			}
 		}
-		result = append(result, tmp)
-		// 上面到for循环遍历完后，从queue中移除已经遍历过的元素
-		// 不这么做也可以在外层for循环里的最开头将queue赋值给一个新的变量，然后将queue置为nil
-		queue = queue[length:]
+		result = append(result, tmpVal)
 	}
+
 	return result
 }
