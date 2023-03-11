@@ -13,27 +13,26 @@ func ZigzagLevelOrder(root *TreeNode) [][]int {
 	result := make([][]int, 0)
 	queue := []*TreeNode{root}
 	for level := 0; len(queue) > 0; level++ {
-		tmpQueue := queue
-		queue = nil
-		length := len(tmpQueue)
-		tmp := make([]int, 0, length)
-		for i := 0; i < length; i++ {
-			tmp = append(tmp, tmpQueue[i].Val)
-			if tmpQueue[i].Left != nil {
-				queue = append(queue, tmpQueue[i].Left)
+		var tmpVal []int
+		var tmpQueue = queue
+		queue = []*TreeNode{}
+		for _, node := range tmpQueue {
+			tmpVal = append(tmpVal, node.Val)
+			if node.Left != nil {
+				queue = append(queue, node.Left)
 			}
-			if tmpQueue[i].Right != nil {
-				queue = append(queue, tmpQueue[i].Right)
+			if node.Right != nil {
+				queue = append(queue, node.Right)
 			}
 		}
 		// 本质上和层序遍历一样，我们只需要把奇数层的元素翻转即可
 		if level%2 == 1 {
-			n := len(tmp)
+			n := len(tmpVal)
 			for i := 0; i < n/2; i++ {
-				tmp[i], tmp[n-1-i] = tmp[n-1-i], tmp[i]
+				tmpVal[i], tmpVal[n-1-i] = tmpVal[n-1-i], tmpVal[i]
 			}
 		}
-		result = append(result, tmp)
+		result = append(result, tmpVal)
 	}
 	return result
 }

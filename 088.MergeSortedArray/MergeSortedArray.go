@@ -3,7 +3,8 @@ package leetcode
 // MergeSortedArray 合并两个有序数组
 func MergeSortedArray(nums1 []int, m int, nums2 []int, n int) {
 	// 反向双指针法，从尾部开始算，先将最大的数放在最后
-	for p1, p2, t := m-1, n-1, m+n-1; p1 >= 0 || p2 >= 0; t-- {
+	p1, p2 := m-1, n-1
+	for t := m + n - 1; p1 >= 0 || p2 >= 0; t-- {
 		if p1 == -1 {
 			nums1[t] = nums2[p2]
 			p2--
