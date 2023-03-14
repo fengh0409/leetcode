@@ -1,6 +1,6 @@
 package leetcode
 
-// FindKthLarget 数组中的第K个最大元素
+// FindKthLargest 数组中的第K个最大元素
 func FindKthLargest(nums []int, k int) int {
 	target := len(nums) - k
 	left, right := 0, len(nums)-1
