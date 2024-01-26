@@ -41,6 +41,11 @@ func TestMiddleNode(t *testing.T) {
 			input{[]int{1}},
 			output{1},
 		},
+
+		{
+			input{[]int{}},
+			output{},
+		},
 	}
 
 	fmt.Printf("------------------------876.MiddleNode------------------------\n")
