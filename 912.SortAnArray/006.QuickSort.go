@@ -1,9 +1,8 @@
 package leetcode
 
-// QuickSort 快速排序，时间复杂度O(nlogn)，最坏情况O(n^2)，不稳定
+// QuickSort 快速排序，时间复杂度O(nlogn)，最坏情况O(n^2)，不稳定，但相比其他排序更快
 func QuickSort(nums []int) []int {
 	return quickSort(nums, 0, len(nums)-1)
-	//return quickSort2(nums, 0, len(nums)-1)
 }
 
 // 基本快排
@@ -33,32 +32,32 @@ func quickSort(nums []int, i, j int) []int {
 	return nums
 }
 
-// 双指针
-func quickSort2(nums []int, i, j int) []int {
-	if i < j {
-		pivot := i
-		left, right := i+1, j
-		for {
-			for left <= right && nums[left] < nums[pivot] {
-				left++
-			}
-			for left <= right && nums[right] > nums[pivot] {
-				right--
-			}
-
-			if left >= right {
-				break
-			}
-			nums[left], nums[right] = nums[right], nums[left]
-			left++
-			right--
-		}
-
-		nums[pivot], nums[left-1] = nums[left-1], nums[pivot]
-		mid := left - 1
-		quickSort2(nums, i, mid-1)
-		quickSort2(nums, mid+1, j)
-	}
-
-	return nums
-}
+// 解法二：双指针
+//func quickSort(nums []int, i, j int) []int {
+//	if i < j {
+//		pivot := i
+//		left, right := i+1, j
+//		for {
+//			for left <= right && nums[left] < nums[pivot] {
+//				left++
+//			}
+//			for left <= right && nums[right] > nums[pivot] {
+//				right--
+//			}
+//
+//			if left >= right {
+//				break
+//			}
+//			nums[left], nums[right] = nums[right], nums[left]
+//			left++
+//			right--
+//		}
+//
+//		nums[pivot], nums[left-1] = nums[left-1], nums[pivot]
+//		mid := left - 1
+//		quickSort(nums, i, mid-1)
+//		quickSort(nums, mid+1, j)
+//	}
+//
+//	return nums
+//}
