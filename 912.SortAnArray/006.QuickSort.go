@@ -2,34 +2,44 @@ package leetcode
 
 // QuickSort 快速排序，时间复杂度O(nlogn)，最坏情况O(n^2)，不稳定，但相比其他排序更快
 func QuickSort(nums []int) []int {
+	// 因为从0开始，所以是len(nums)-1
 	return quickSort(nums, 0, len(nums)-1)
 }
 
 // 基本快排
 func quickSort(nums []int, i, j int) []int {
 	if i < j {
-		// 取第一个值作为基准值
-		pivot := i
-		// 基准值后面的第一个数
-		left, right := pivot+1, j
-		// 遍历基准值后面所有的数据，和基准值进行比较，比基准值小的往左边放
-		for k := left; k <= right; k++ {
-			if nums[k] < nums[pivot] {
-				nums[left], nums[k] = nums[k], nums[left]
-				left++
-			}
-		}
-		// 比较一趟下来，left前半部分都比基准值小，left后半部分都比基准值大
-		// 交换基准值与分治位置
-		nums[pivot], nums[left-1] = nums[left-1], nums[pivot]
-		// 重新设置边界，进行分治
-		mid := left - 1
+		mid := partition(nums, i, j)
 
 		quickSort(nums, i, mid-1)
 		quickSort(nums, mid+1, j)
 	}
 
 	return nums
+}
+
+func partition(nums []int, i, j int) int {
+	// 取第一个值作为基准值
+	pivot := i
+	// 基准值后面的第一个数
+	left := pivot + 1
+	// 基准值后面的最后一个数
+	right := j
+	// 遍历基准值后面所有的数据
+	for k := left; k <= right; k++ {
+		// 当前值和基准值进行比较，比基准值小的往左边放
+		if nums[k] < nums[pivot] {
+			nums[left], nums[k] = nums[k], nums[left]
+			left++
+		}
+	}
+	// 比较一趟下来，left前半部分都比基准值小，left后半部分都比基准值大
+	// 交换基准值与分治位置
+	nums[pivot], nums[left-1] = nums[left-1], nums[pivot]
+	// 重新设置边界，进行分治
+	mid := left - 1
+
+	return mid
 }
 
 // 解法二：双指针
