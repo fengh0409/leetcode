@@ -47,8 +47,6 @@ func getKthElement(nums1, nums2 []int, k int) int {
 			p2 = newP2 + 1
 		}
 	}
-
-	return 0
 }
 
 func min(x, y int) int {
