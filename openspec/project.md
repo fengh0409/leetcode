@@ -46,3 +46,8 @@
 
 ## External Dependencies
 - `github.com/halfrost/LeetCode-Go/structures`（经 `vendor/` 引入）：`ListNode`、`TreeNode`、`PriorityQueue`、`Heap` 等
+
+## OpenSpec Active Changes
+- `add-move-zeroes`：数组原地移动零能力（不复制数组、稳定、O(n)/O(1)）
+  - 位置：`openspec/changes/add-move-zeroes/`
+  - 规格增量：`openspec/changes/add-move-zeroes/specs/arrays/move-zeroes/spec.md`
